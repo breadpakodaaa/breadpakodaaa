@@ -25,20 +25,22 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Commit updated animation
         run: |
-          if [ -s dist/pacman-contribution-graph.svg ]; then
+          if [ -s dist/pacman-contribution-graph.svg ] && [ -s dist/pacman-contribution-graph-dark.svg ]; then
             mkdir -p assets
             cp dist/pacman-contribution-graph.svg assets/github-contribution-snake.svg
-          elif [ -s pacman-contribution-graph.svg ]; then
+            cp dist/pacman-contribution-graph-dark.svg assets/github-contribution-snake-dark.svg
+          elif [ -s pacman-contribution-graph.svg ] && [ -s pacman-contribution-graph-dark.svg ]; then
             mkdir -p assets
             cp pacman-contribution-graph.svg assets/github-contribution-snake.svg
+            cp pacman-contribution-graph-dark.svg assets/github-contribution-snake-dark.svg
           else
-            echo "The Pac-Man action did not produce the expected SVG." >&2
+            echo "The Pac-Man action did not produce both light and dark SVGs." >&2
             find . -maxdepth 3 -type f -name '*.svg' -print
             exit 1
           fi
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add assets/github-contribution-snake.svg
+          git add assets/github-contribution-snake.svg assets/github-contribution-snake-dark.svg
           if ! git diff --cached --quiet; then
             git commit -m "Update contribution animation"
             git push

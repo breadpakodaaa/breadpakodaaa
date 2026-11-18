@@ -3,7 +3,7 @@
 </p>
 <p align="center">
 <img
-  src="https://capsule-render.vercel.app/api?type=rect&color=0D1117&height=110&section=header&text=AANCHAL%20SINGH&fontSize=42&fontColor=BEE5FA&fontAlignY=44&desc=cybersecurity%20%E2%80%A2%20full-stack%20%E2%80%A2%20design&descSize=14&descColor=94D5F7&descAlignY=72"
+  src="https://capsule-render.vercel.app/api?type=rect&color=0D1117&height=140&section=header&text=AANCHAL%20SINGH&fontSize=42&fontColor=BEE5FA&fontAlignY=44&desc=cybersecurity%20%E2%80%A2%20full-stack%20%E2%80%A2%20design&descSize=14&descColor=94D5F7&descAlignY=72"
   width="100%"
 />
 
@@ -57,5 +57,9 @@ Exploring how things work from the systems beneath the surface to the details th
 <h2><img src="assets/heading-contributions.png" alt="GitHub Contribution Activity" width="346" /></h2>
 
 <p align="center">
-  <img src="assets/github-contribution-snake.svg" alt="Pac-Man style animation tracing my GitHub contribution graph" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/github-contribution-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/github-contribution-snake.svg">
+    <img src="assets/github-contribution-snake.svg" alt="Pac-Man style animation tracing my GitHub contribution graph" width="100%" />
+  </picture>
 </p>
