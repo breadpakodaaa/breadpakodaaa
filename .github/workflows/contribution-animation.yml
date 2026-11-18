@@ -1,0 +1,45 @@
+name: Update contribution animation
+
+on:
+  schedule:
+    - cron: "17 0 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/contribution-animation.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+      - name: Generate Pac-Man contribution animation
+        uses: abozanona/pacman-contribution-graph@main
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit updated animation
+        run: |
+          if [ -s dist/pacman-contribution-graph.svg ]; then
+            mkdir -p assets
+            cp dist/pacman-contribution-graph.svg assets/github-contribution-snake.svg
+          elif [ -s pacman-contribution-graph.svg ]; then
+            mkdir -p assets
+            cp pacman-contribution-graph.svg assets/github-contribution-snake.svg
+          else
+            echo "The Pac-Man action did not produce the expected SVG." >&2
+            find . -maxdepth 3 -type f -name '*.svg' -print
+            exit 1
+          fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add assets/github-contribution-snake.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "Update contribution animation"
+            git push
+          fi
