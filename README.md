@@ -57,9 +57,5 @@ Exploring how things work from the systems beneath the surface to the details th
 <h2><img src="assets/heading-contributions.png" alt="GitHub Contribution Activity" width="346" /></h2>
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/github-contribution-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/github-contribution-snake.svg">
-    <img src="assets/github-contribution-snake.svg" alt="Pac-Man style animation tracing my GitHub contribution graph" width="100%" />
-  </picture>
+  <img src="assets/github-contribution-snake-dark.svg" alt="Pac-Man style animation tracing my GitHub contribution graph in dark theme" width="100%" />
 </p>
