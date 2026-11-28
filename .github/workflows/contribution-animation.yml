@@ -22,9 +22,6 @@ jobs:
         uses: abozanona/pacman-contribution-graph@main
         with:
           github_user_name: ${{ github.repository_owner }}
-          # Add a repository Actions secret named CONTRIBUTION_TOKEN with read:user
-          # to include private/internal contribution counts. GITHUB_TOKEN is the
-          # fallback for public contributions and remains the token used to push.
           github_token: ${{ secrets.CONTRIBUTION_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Commit updated animation
         run: |
